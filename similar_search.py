@@ -6,9 +6,14 @@ import numpy as np
 device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
 print(f"Using device: {device}")
 
-# Load pre-trained model and tokenizer globally
 tokenizer = AutoTokenizer.from_pretrained("sentence-transformers/paraphrase-MiniLM-L6-v2")
 model = AutoModel.from_pretrained("sentence-transformers/paraphrase-MiniLM-L6-v2")
+
+
+#I am using fancy GPU for computing vector search. It's faster but for this amount of data, it does not matter.
+#That being said, you can ignore these three following lines(comment out) 
+device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
+print(f"Using device: {device}")
 model.to(device)
 
 def split_text(text, max_length=20):
