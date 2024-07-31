@@ -12,7 +12,7 @@ device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
 print(f"Using device: {device}")
 model.to(device)
 
-def split_text(text, max_length=50):
+def split_text(text, max_length=520):
     tokens = tokenizer.tokenize(text)
     chunks = []
     current_chunk = []
@@ -63,4 +63,4 @@ def similar_search(query):
     print(f"Based on vector search, what's related to the query '{query}'?\n")
     for idx in k_nearest_neighbors:
         print(f"Chunk: {chunks[idx]} - Similarity: {similarities[idx]}")
-    return chunks[0]
+    return chunks[k_nearest_neighbors[0]]
