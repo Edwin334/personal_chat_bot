@@ -1,5 +1,6 @@
 # personal_chat_bot
-To run this program
+This is just a demo for shiwen to play around.
+## To run this program
 pip install -r requirement.txt
-Then run
+## Then run
 python3 chatbot_demo.py
